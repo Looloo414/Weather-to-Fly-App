@@ -1,20 +1,52 @@
-let weatherAPI = "https://www.metaweather.com/api/"
+// -------------------CONSTANTS-------------------
+
+
+
+// -------------------VARIABLES--------------------
+
+let weatherAPI = "https://www.metaweather.com/api/location/search/?query=denver"
 let sunsetAPI = "https://sunrise-sunset.org/api"
 
+// ----------------CACHED ELEMENTS------------------
+const userInput = document.querySelectorAll('.input');
+const userSubmit = document.querySelector('.search-button');
+const results = document.querySelectorAll('.search-results');
 
 
-fetch(sunsetAPI)                     //fetch sunset API
-.then(response => response.json())   //take the response and convert into json
-.then(json => {                      //once it is a json
-    createP(json.info);              //create the paragraph with info
-    return fetch(weatherAPI + json.info);   //the fetch from the weather API
-})
-// .then(response => response.json())
-// .then(json => {
-//     createP(json.info);
-//     return fetch(weatherAPI);
-// })
-.catch(err => console.log(err));
+// ----------------EVENT LISTENERS-------------------
+
+
+
+// --------------------FUNCTIONS----------------------
+
+// fetch(weatherAPI,{
+//     mode: "no-cors"
+// })                   
+// .then(response) => {
+//     console.log(response)
+//     return response.json()   
+// }
+// .catch(err => console.log(err));
+
+
+
+fetch("https://www.metaweather.com/api/location/2391279", {mode: 'no-cors'})
+  .then(response => response.json())
+  .then(result => {
+    const today = result.consolidated_weather[0]
+    console.log(`temperature in ${result.title} stay between ${today.min_temp} and ${today.max_temp}`)
+    })
+  .then(data => console.log(data));
+
+
+
+
+
+
+
+
+
+
 
 
 // fetch(weatherAPI).then(function (data) {

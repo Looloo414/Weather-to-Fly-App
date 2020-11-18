@@ -9,13 +9,13 @@
 </head>
 <body>
     <h1>Weather to fly!</h1>
-    <div>
+    <div class='input' id=''>
         <h3>Input your city here:</h2>
         <input class="city-input"></input>
         <h3>Date:</h3>
         <input class="date-input"></input>
-        <button>Search</button> 
     </div>
+    <button class='search-button' id='searchButton'>Search</button> 
     <br/>
     <div class="search-results">
         <card class="weather-conditions">The weather conditions are:</card>
@@ -23,9 +23,10 @@
         <card class="sunset">Sunset:</card>
         <br/><br/>
         <card class="sunrise">Sunrise:</card>
+        <div class="no-go-tester" id="noGoTester">VFR condition tester!</div>
     </div>   
     <br/>
-    <div>VFR condition tester!</div>
+    
    
 </body>
 </html>

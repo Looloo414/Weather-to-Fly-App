@@ -1,0 +1,35 @@
+html {
+    box-sizing: border-box
+  }
+  
+  /* The Universal Selector */
+  *, /* All elements*/
+  *::before, /* All ::before pseudo-elements */
+  *::after { /* All ::after pseudo-elements */
+    /* height & width will now include border & padding by default
+       but can be over-ridden as needed */
+    box-sizing: inherit;
+  }
+
+  :root {
+    font-size: 62.5%;
+  }
+
+body{
+    text-align: center; 
+    margin:
+}
+
+.search-button {
+    margin: 20px 0 40px 0
+}
+
+.search-results {
+    border: 5px black solid;
+    text-align: left;
+    font-size: 20px;
+}
+#noGoTester {
+    padding: 40px;
+    margin: 20px 0 10px 0
+}
