@@ -8,7 +8,11 @@ My app/site is going to have two different
 <!-- PSEUDOCODE --> 
 
 1. Pull APIs into code.
-   ---->Call fetch api(json), handle errors, 
+   ---->Call fetch api(json)
+   ---->Response, promise
+   ---->Complete and grab data from body of response
+   ---->Make element with the data
+   ---->Handle errors
 2. Create an input bar for the user to enter in their "values" which will be their location and the date they are searching for. 
 3. Create a submit button, so that the users iput will pull information from the API populating the weather and the sunrise and sunset times based on their request. 
    ----> Make variables for the API, the city & date (not hard coded, it is null), and the URLs (making it into a string or template literal)

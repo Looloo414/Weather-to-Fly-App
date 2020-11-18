@@ -8,15 +8,24 @@
     <title>Unit 1 Project</title>
 </head>
 <body>
-    <script>
-        
-        const weather_api_url = 'https://www.metaweather.com/api/'
-        async function getWeatherApi() {
-            const response = await fetch(weather_api_url);
-            const data = await response.json();
-            console.log(data);
-        }
-        getWeatherApi();
-    </script>
+    <h1>Weather to fly!</h1>
+    <div>
+        <h3>Input your city here:</h2>
+        <input class="city-input"></input>
+        <h3>Date:</h3>
+        <input class="date-input"></input>
+        <button>Search</button> 
+    </div>
+    <br/>
+    <div class="search-results">
+        <card class="weather-conditions">The weather conditions are:</card>
+        <br/><br/>
+        <card class="sunset">Sunset:</card>
+        <br/><br/>
+        <card class="sunrise">Sunrise:</card>
+    </div>   
+    <br/>
+    <div>VFR condition tester!</div>
+   
 </body>
 </html>
