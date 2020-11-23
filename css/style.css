@@ -15,25 +15,23 @@ html {
     font-size: 62.5%;
   }
 
-body{
+  body{
     text-align: center; 
     display: grid;
     justify-content: center;
+    background: url("https://i1.wp.com/css-tricks.com/wp-content/uploads/2019/06/clouds-featured.png?fit=4000%2C2000&ssl=1");
+    width: 100%;
+    min-width: 311px;
+    height: 100vh;
+    align-items: center;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    animation: animation 50s linear infinite;
 }
-
-.search-button {
-    margin: 20px 0 40px 0;
-    
-}
-
-.search-results {
-    border: 5px black solid;
-    text-align: left;
-    font-size: 20px;
-    padding: 10px 15px 10px 15px;
-    width: 400px;
-}
-#noGoTester {
-    padding: 40px;
-    margin: 20px 0 10px 0
-}
+@keyframes animation {
+    from {
+      background-position: 0px 0px; }
+    to {
+      background-position: 100% 0px; } 
+  }
+ 

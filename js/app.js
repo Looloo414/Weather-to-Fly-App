@@ -28,7 +28,8 @@ dallas.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
     .then(response => response.json())
     .then((data) => {
-    let dallasData
+    let dallasData = {}
+        dallasData['']
 })
 .catch(err => console.log(err))
 
