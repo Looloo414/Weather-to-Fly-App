@@ -16,22 +16,32 @@ const la = document.getElementById('los-ang');
 
 // ----------------EVENT LISTENERS-------------------
 den.addEventListener('click', () => {
-    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/search/?query=denver")
+    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2391279/2020/11/23/")
     .then(response => response.json())
     .then((data) => {
-    console.log(data[0])
+    console.log(data[0].weather_state_name)
 })
 .catch(err => console.log(err))
 
 })
+dallas.addEventListener('click', () => {
+    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
+    .then(response => response.json())
+    .then((data) => {
+    let dallasData
+})
+.catch(err => console.log(err))
 
-function gotData(data) {
-    let denverId = Object.keys(denver.consolidated_weather[0].humidity.)[0];
-}
+})
+la.addEventListener('click', () => {
+    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2442047/2020/11/23/")
+    .then(response => response.json())
+    .then((data) => {
+    console.log(data[0].weather_state_name)
+})
+.catch(err => console.log(err))
 
-// dallas.addEventListener('click', () )
-
-// la.addEventListener('click', ())
+})
 
 
 
