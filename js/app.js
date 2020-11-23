@@ -25,6 +25,10 @@ den.addEventListener('click', () => {
 
 })
 
+function gotData(data) {
+    let denverId = Object.keys(denver.consolidated_weather[0].humidity.)[0];
+}
+
 // dallas.addEventListener('click', () )
 
 // la.addEventListener('click', ())
