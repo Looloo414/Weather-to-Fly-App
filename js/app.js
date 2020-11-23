@@ -18,9 +18,8 @@ const la = document.getElementById('los-ang');
 den.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/search/?query=denver")
     .then(response => response.json())
-    console.log(response.json())
-    // .then((data) => {
-    // console.log(data[0])
+    .then((data) => {
+    console.log(data[0])
 })
 .catch(err => console.log(err))
 
