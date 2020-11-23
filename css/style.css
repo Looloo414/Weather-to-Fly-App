@@ -17,17 +17,21 @@ html {
 
 body{
     text-align: center; 
-    margin:
+    display: grid;
+    justify-content: center;
 }
 
 .search-button {
-    margin: 20px 0 40px 0
+    margin: 20px 0 40px 0;
+    
 }
 
 .search-results {
     border: 5px black solid;
     text-align: left;
     font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    width: 400px;
 }
 #noGoTester {
     padding: 40px;

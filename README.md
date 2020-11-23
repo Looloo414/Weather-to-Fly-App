@@ -3,7 +3,8 @@
 
 
 
-My app/site is going to have two different 
+My app/site is going to have two different input fields that the user will input their location and date. 
+The search button will have an onclick event that will fetch 2 API's, convert them into json objects, filter through the api and pull the (id-->date, weather state, weather abbr, wind speed, wind direction, temp, air pressure, humididty, visibility)
 
 <!-- PSEUDOCODE --> 
 
