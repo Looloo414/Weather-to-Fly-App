@@ -39,18 +39,18 @@ den.addEventListener('click', () => {
         })
 })
 
-// den.addEventListener('click', () => {
-//     fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
-//     .then(response => response.json())
-//     .then((response) => {
-//         let denSun = {}
-//         denSun['sunrise'] = response.results.sunrise
-//         denSun['sunset'] = response.results.sunset
-//         sunInfoDen.push(denSun)
-//         console.log(sunInfoDen)
-//         renderDenSun()
-//     })
-// })
+den.addEventListener('click', () => {
+    fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
+    .then(response => response.json())
+    .then((response) => {
+        let denSun = {}
+        denSun['sunrise'] = response.results.sunrise
+        denSun['sunset'] = response.results.sunset
+        sunInfoDen.push(denSun)
+        console.log(sunInfoDen)
+        renderDenSun()
+    })
+})
 
 dallas.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
@@ -147,6 +147,9 @@ function render() {
     dallasInfo.forEach((x, idx) => {
         appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
     })
+    // if (data[0].visibility < 5){
+    //     console.log("Not VFR")
+    // }
 }
 
 function renderDen() {
