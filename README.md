@@ -63,3 +63,5 @@ My app/site was originally supposed to have 2 input buttons that would allow the
 
 I plan to debug the issues concerining the "WOEID" in the weather API, so that I can create input bars for the user to enter their own city and their desired dates. I also want to add a stylistic function to display whether the current conditions in the user's area are safe for VFR flight or not. I want to play with the animations and style features more as well. I would like to have an airplane fly across the screen and a green light illuminates showing that the conditions are within VFR limitations or a grounded plane and a red light will display if they are not. 
 
+I would also like to add a mathfloor function to the data that is displayed so it is more readable and I would like to figure out a way to convert the time into local time for the city that is selected. 
+
