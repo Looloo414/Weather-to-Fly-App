@@ -1,4 +1,4 @@
-# unit-one-project
+# Unit-One-Project
 
 
 ### Technologies Used:
@@ -12,12 +12,12 @@
 * Heroku
 * [Meta Weather API](https://www.metaweather.com/api/)
 * [Sunrise Sunset API](https://sunrise-sunset.org/api)
-* GitHub
+* [GitHub](https://github.com/Looloo414/unit-one-project)
 
 
 ### Getting Started:
 
-[Weather to Fly!](weather_to_fly.surge.sh)
+[Weather to Fly!](http://weather_to_fly.surge.sh/)
 
 
 Deployed App: 
