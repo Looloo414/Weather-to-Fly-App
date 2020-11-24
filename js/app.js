@@ -15,7 +15,7 @@ async function fetchDataMutipleAPI(firstAPI = null, secondAPI = null) {
                         Pending Please Wait Until We Fetch The Data From The API...
                         </h3>    
                         `
-    container.appendChild(newDiv)
+    container.appendChild(newDiv)  
 
     const [firstResponse, secondResponse] = await Promise.all(
         [

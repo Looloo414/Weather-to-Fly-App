@@ -48,9 +48,11 @@ footer {
 }
 .container {
   font-size: 20px;
+  font-weight: bold;
 }
 .sunsetSunrise {
   font-size: 15px;
+  font-weight: bold;
 }
 .images {
   height: 55px;
