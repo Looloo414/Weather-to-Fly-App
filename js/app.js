@@ -7,22 +7,22 @@ const container = document.querySelector('.container')
 const footer = document.querySelector('.sunsetSunrise')
 
 
-// New Featch Function
-async function fetchDataMutipleAPI(firstAPI=null, secondAPI=null) {
+// -------------Fetch Function------------------------
+async function fetchDataMutipleAPI(firstAPI = null, secondAPI = null) {
     let newDiv = document.createElement("div")
     newDiv.innerHTML = `
                         <h3 class="card h-100">
-                        Pendding Please Wait Until We Featch The Data From The API...
+                        Pending Please Wait Until We Fetch The Data From The API...
                         </h3>    
                         `
     container.appendChild(newDiv)
 
     const [firstResponse, secondResponse] = await Promise.all(
-            [
-                fetch(firstAPI),
-                fetch(secondAPI)
-            ]
-        );
+        [
+            fetch(firstAPI),
+            fetch(secondAPI)
+        ]
+    );
 
     const first_API = await firstResponse.json();
     const second_API = await secondResponse.json();
@@ -33,23 +33,23 @@ async function fetchDataMutipleAPI(firstAPI=null, secondAPI=null) {
     };
 }
 
-function APIURLs(target){
-    if(target === 'Denver')
+function APIURLs(target) {
+    if (target === 'Denver')
         return [
             'https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2391279/2020/11/23/', // Forcast API
             'https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264'                     // Sunset/Sunrise API
         ]
-    if(target === 'Dallas')
+    if (target === 'Dallas')
         return [
             'https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/', // Forcast API
             'https://api.sunrise-sunset.org/json?lat=32.778149&lng=-96.795403'                      // Sunset/Sunrise API
         ]
-    if(target === 'LosAngeles')
+    if (target === 'LosAngeles')
         return [
             'https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2442047/2020/11/23/', // Forcast API
             'https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323'                     // Sunset/Sunrise API
         ]
-} 
+}
 
 // ----------------EVENT LISTENERS-------------------
 
@@ -57,23 +57,23 @@ function APIURLs(target){
     item.addEventListener('click', (e) => {
         let targetLocation = e.target.getAttribute('data-location');
         const [first_API_URL, second_API_URL] = APIURLs(targetLocation);
-        fetchDataMutipleAPI(first_API_URL,second_API_URL)
-        .then(({ first_API, second_API }) => {
-            // Handel First data Forcast Info
-            let firstData = {}
-            firstData['visibility'] = first_API[0].visibility
-            firstData['wind_speed'] = first_API[0].wind_speed
-            firstData['wind_direction'] = first_API[0].wind_direction
-            firstData['weather_state_name'] = first_API[0].weather_state_name
-            renderForcastInfo(firstData)
+        fetchDataMutipleAPI(first_API_URL, second_API_URL)
+            .then(({ first_API, second_API }) => {
+                // -----------Handle First data Forcast Info
+                let firstData = {}
+                firstData['visibility'] = first_API[0].visibility
+                firstData['wind_speed'] = first_API[0].wind_speed
+                firstData['wind_direction'] = first_API[0].wind_direction
+                firstData['weather_state_name'] = first_API[0].weather_state_name
+                renderForcastInfo(firstData)
 
-            // Handel Second data Sun Info
-            let secondData = {}
-            secondData['sunrise'] = second_API.results.sunrise
-            secondData['sunset'] = second_API.results.sunset
-            renderSunInfo(secondData)
-        });
-    })    
+                //-------------- Handle Second API Sun Info
+                let secondData = {}
+                secondData['sunrise'] = second_API.results.sunrise
+                secondData['sunset'] = second_API.results.sunset
+                renderSunInfo(secondData)
+            });
+    })
 })
 
 // --------------------FUNCTIONS----------------------
@@ -134,10 +134,10 @@ function deleteQuote(idx) {
 function renderForcastInfo(forcastInfo) {
     container.innerHTML = ''
     appendDiv(
-        forcastInfo['visibility'], 
-        forcastInfo['wind_speed'], 
-        forcastInfo['wind_direction'], 
-        forcastInfo['weather_state_name'], 
+        forcastInfo['visibility'],
+        forcastInfo['wind_speed'],
+        forcastInfo['wind_direction'],
+        forcastInfo['weather_state_name'],
         0
     )
 }

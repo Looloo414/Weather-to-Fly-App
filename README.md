@@ -1,25 +1,44 @@
 # unit-one-project
-![Picture](/Users/alexafaulkison/code/sei/homework/unit-one-project/.vscode/Screen Shot 2020-11-16 at 2.37.12 PM.png)
+
+
+### Technologies Used:
+
+* HTML
+* CSS
+* JavaScript
+* Wireframe CC
+* Whimsical
+* Postman
+* Heroku
+* [Meta Weather API](https://www.metaweather.com/api/)
+* [Sunrise Sunset API](https://sunrise-sunset.org/api)
+* GitHub
+
+
+### Getting Started:
+
+[Sunrise Sunset API](https://sunrise-sunset.org/api)
 
 
 
-My app/site is going to have two different input fields that the user will input their location and date. 
-The search button will have an onclick event that will fetch 2 API's, convert them into json objects, filter through the api and pull the (id-->date, weather state, weather abbr, wind speed, wind direction, temp, air pressure, humididty, visibility)
 
-<!-- PSEUDOCODE --> 
 
-1. Pull APIs into code.
+### Biggest Challenges
+
+My app/site was originally supposed to have 2 input buttons that would allow the user to input their city and the date they desire, however; I struggled immensly with the weather API. Between using outside servers to get around CORS and extracting the specific data I desired I decided to change my plan. Each city in this API has a specific and random id number that would have made it difficult to translate, so I hard coded the city's specific API code and limited this project to only pulling data from a few locations. 
+
+
+
+### Pseudocode
+
+1. Connect all cached element references: buttons and div and footers where data will be appended. 
+2. Pull APIs into code.
    ---->Call fetch api(json)
-   ---->Response, promise
+   ---->Response, promise, async, await second API
    ---->Complete and grab data from body of response
    ---->Make element with the data
    ---->Handle errors
-2. Create an input bar for the user to enter in their "values" which will be their location and the date they are searching for. 
-3. Create a submit button, so that the users iput will pull information from the API populating the weather and the sunrise and sunset times based on their request. 
-   ----> Make variables for the API, the city & date (not hard coded, it is null), and the URLs (making it into a string or template literal)
-   ----> The API can be broken down into its separate parts of the information we want to populate.
-   ----> let weather; let sunset; let surise;
-   ----> create a functions that populates the different variables onto a card or display box by using let url = `template literal` or string of the different variables.
-4. Create a cached element for the submit button and create a functions that asks the API what the sunset, sunrise and weather are based on the text input field.
-    ---->input.value()
+3. Create event listners for each button and have it pull the promised API's and append the weather to the div and the sunrise and sunset data to the footer. 
+4. Since the API's are being fetched through another server and it is fetching 2 API's create a message to allow the user to know that their click is doing something and to please wait. 
+5. Create a delete function so that the appended/fetched data does not keep pushing into the array and displaying multiple fetch requests. 
 
