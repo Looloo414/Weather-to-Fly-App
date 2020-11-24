@@ -31,26 +31,20 @@ den.addEventListener('click', () => {
             denData['wind_direction'] = data[0].wind_direction
             denData['weather_state_name'] = data[0].weather_state_name
             denInfo.push(denData)
-            console.log(denInfo)
+            console.log(denInfo) 
+        })
+        .then(responseTwo => {
+            secondAPI()
+        })
+
             renderDen()
         })
         .catch((err) => {
             console.log(err)
         })
-})
 
-den.addEventListener('click', () => {
-    fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
-    .then(response => response.json())
-    .then((response) => {
-        let denSun = {}
-        denSun['sunrise'] = response.results.sunrise
-        denSun['sunset'] = response.results.sunset
-        sunInfoDen.push(denSun)
-        console.log(sunInfoDen)
-        renderDenSun()
-    })
-})
+
+
 
 dallas.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
@@ -126,6 +120,7 @@ function appendFooter(sunrise, sunset, idx) {
     footer.appendChild(newDiv)
 }
 
+
 function deleteQuote(idx) {
    dallasInfo.splice(idx, 1)
     render()
@@ -141,6 +136,18 @@ function deleteQuote(idx) {
      renderLA()
  }
 
+ function secondAPI() {
+     return fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
+     .then(response => response.json())
+ }
+
+//  .then(response => response.json())
+//  .then((response) => {
+//      let denSun = {}
+//      denSun['sunrise'] = response.results.sunrise
+//      denSun['sunset'] = response.results.sunset
+//      sunInfoDen.push(denSun)
+//      console.log(sunInfoDen)
 
 function render() {
     container.innerHTML = ''
@@ -154,9 +161,14 @@ function render() {
 
 function renderDen() {
     container.innerHTML = ''
-    sunInfoDen.forEach((x, idx) => {
+    denInfo.forEach((x, idx) => {
         appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
     })
+    footer.innerHTML = ''
+    sunInfoDen.forEach((y, idx) => {
+        appendFooter(x['sunset'], x['sunrise'], idx)
+    })
+
 }
 
 function renderLA() {
@@ -166,14 +178,6 @@ function renderLA() {
     })
 }
 
-function renderDenSun() {
-    footer.innerHTML = ''
-    dallasInfo.forEach((x, idx) => {
-        let sunrise = x[0].sunrise
-        let sunset = x[0].sunset
-        appendFooter(sunrise, sunset, idx)
-    })
-}
 
 // --------------------FUNCTIONS----------------------
 
