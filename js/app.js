@@ -59,7 +59,7 @@ function APIURLs(target) {
         const [first_API_URL, second_API_URL] = APIURLs(targetLocation);
         fetchDataMutipleAPI(first_API_URL, second_API_URL)
             .then(({ first_API, second_API }) => {
-                // -----------Handle First data Forcast Info
+// -----------Handle First data Forcast Info-------
                 let firstData = {}
                 firstData['visibility'] = first_API[0].visibility
                 firstData['wind_speed'] = first_API[0].wind_speed
@@ -67,7 +67,7 @@ function APIURLs(target) {
                 firstData['weather_state_name'] = first_API[0].weather_state_name
                 renderForcastInfo(firstData)
 
-                //-------------- Handle Second API Sun Info
+//-------------- Handle Second API Sun Info----------
                 let secondData = {}
                 secondData['sunrise'] = second_API.results.sunrise
                 secondData['sunset'] = second_API.results.sunset
