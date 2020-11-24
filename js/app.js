@@ -33,10 +33,6 @@ den.addEventListener('click', () => {
             denInfo.push(denData)
             console.log(denInfo) 
         })
-        .then(responseTwo => {
-            secondAPI()
-        })
-
             renderDen()
         })
         .catch((err) => {
@@ -154,9 +150,7 @@ function render() {
     dallasInfo.forEach((x, idx) => {
         appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
     })
-    // if (data[0].visibility < 5){
-    //     console.log("Not VFR")
-    // }
+
 }
 
 function renderDen() {
@@ -164,11 +158,6 @@ function renderDen() {
     denInfo.forEach((x, idx) => {
         appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
     })
-    footer.innerHTML = ''
-    sunInfoDen.forEach((y, idx) => {
-        appendFooter(x['sunset'], x['sunrise'], idx)
-    })
-
 }
 
 function renderLA() {
