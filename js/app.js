@@ -1,9 +1,10 @@
-// -------------------CONSTANTS-------------------
-
-
-
 // -------------------VARIABLES--------------------
-let sunsetAPI = "https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&callback=mycallback"
+let dallasInfo = []
+let denInfo = []
+let laInfo = []
+let sunInfoDen = []
+let sunInfoDal = []
+let sunInfoLA = []
 
 // ----------------CACHED ELEMENTS------------------
 const results = document.querySelectorAll('.search-results');
@@ -15,12 +16,7 @@ const footer = document.querySelector('.sunsetSunrise')
 const denSunBtn = document.querySelector('.den-sunrise')
 const dalSunBtn = document.querySelector('.dal-sunrise')
 const laSunBtn = document.querySelector('.la-sunrise')
-let dallasInfo = []
-let denInfo = []
-let laInfo = []
-let sunInfoDen = []
-let sunInfoDal = []
-let sunInfoLA = []
+
 
 
 // ----------------EVENT LISTENERS-------------------
@@ -34,32 +30,32 @@ den.addEventListener('click', () => {
             denData['wind_direction'] = data[0].wind_direction
             denData['weather_state_name'] = data[0].weather_state_name
             denInfo.push(denData)
-            console.log(denInfo) 
-    
+            console.log(denInfo)
+
             renderDen()
         })
         .catch((err) => {
             console.log(err)
         })
-    })
+})
 
 denSunBtn.addEventListener('click', () => {
     fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
-    .then(response => response.json())
-    .then((response) => {
-        let denSun = {}
-        denSun['sunrise'] = response.results.sunrise
-        denSun['sunset'] = response.results.sunset
-        sunInfoDen.push(denSun)
-        console.log(sunInfoDen)
-    
-    renderDenSun()
-    })
-    .catch((err) => {
-    console.log(err)
-    })
+        .then(response => response.json())
+        .then((response) => {
+            let denSun = {}
+            denSun['sunrise'] = response.results.sunrise
+            denSun['sunset'] = response.results.sunset
+            sunInfoDen.push(denSun)
+            console.log(sunInfoDen)
+
+            renderDenSun()
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 })
-    
+
 dallas.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
         .then(response => response.json())
@@ -81,19 +77,19 @@ dallas.addEventListener('click', () => {
 
 dalSunBtn.addEventListener('click', () => {
     fetch("https://api.sunrise-sunset.org/json?lat=32.778149&lng=-96.795403")
-    .then(response => response.json())
-    .then((response) => {
-        let dalSun = {}
-        dalSun['sunrise'] = response.results.sunrise
-        dalSun['sunset'] = response.results.sunset
-        sunInfoDal.push(dalSun)
-        console.log(sunInfoDal)
-    
-    renderDalSun()
-    })
-    .catch((err) => {
-    console.log(err)
-    })
+        .then(response => response.json())
+        .then((response) => {
+            let dalSun = {}
+            dalSun['sunrise'] = response.results.sunrise
+            dalSun['sunset'] = response.results.sunset
+            sunInfoDal.push(dalSun)
+            console.log(sunInfoDal)
+
+            renderDalSun()
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 })
 
 
@@ -108,31 +104,31 @@ la.addEventListener('click', () => {
             laData['weather_state_name'] = data[0].weather_state_name
             laInfo.push(laData)
             renderLA()
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 
 })
 
 laSunBtn.addEventListener('click', () => {
     fetch("https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323")
-    .then(response => response.json())
-    .then((response) => {
-        let LASun = {}
-        LASun['sunrise'] = response.results.sunrise
-        LASun['sunset'] = response.results.sunset
-        sunInfoLA.push(LASun)
-        console.log(sunInfoLA)
-    
-    renderLASun()
-    })
-    .catch((err) => {
-    console.log(err)
-    })
+        .then(response => response.json())
+        .then((response) => {
+            let LASun = {}
+            LASun['sunrise'] = response.results.sunrise
+            LASun['sunset'] = response.results.sunset
+            sunInfoLA.push(LASun)
+            console.log(sunInfoLA)
+
+            renderLASun()
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 })
 
-
+// --------------------FUNCTIONS----------------------
 
 function appendDiv(visibility, wind_direction, wind_speed, weather_state_name, idx) {
     container.innerHTML = ''
@@ -163,8 +159,8 @@ function appendFooter(sunrise, sunset, idx) {
                             <div class="card-body">
                                 <blockquote class="blockquote mb-0">
                             
-                                    <p>Sunrise:${sunrise}</p>
-                                    <p>Sunset: ${sunset}</p>
+                                    <p>Sunrise in UTC:${sunrise}</p>
+                                    <p>Sunset in UTC: ${sunset}</p>
                                 </blockquote>
                             </div>   
                         `
@@ -173,19 +169,19 @@ function appendFooter(sunrise, sunset, idx) {
 
 
 function deleteQuote(idx) {
-   dallasInfo.splice(idx, 1)
+    dallasInfo.splice(idx, 1)
     render()
 }
 
 function deleteQuote(idx) {
     denInfo.splice(idx, 1)
-     renderDen()
- }
+    renderDen()
+}
 
- function deleteQuote(idx) {
+function deleteQuote(idx) {
     laInfo.splice(idx, 1)
-     renderLA()
- }
+    renderLA()
+}
 
 
 function render() {
@@ -230,7 +226,7 @@ function renderLASun() {
         appendFooter(x['sunrise'], x['sunset'], idx)
     })
 }
-// --------------------FUNCTIONS----------------------
+
 
 
 
