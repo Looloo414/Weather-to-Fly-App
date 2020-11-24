@@ -86,7 +86,7 @@ function appendDiv(visibility, wind_direction, wind_speed, weather_state_name, i
                             <div class="card-body">
                                 <blockquote class="blockquote mb-0">
                             
-                                    <p>Visibility:${visibility}</p>
+                                    <p>Visibility: ${visibility}</p>
                                     <p>Cloud Coverage: ${weather_state_name}</p>
                                     <p>Wind direction: ${wind_direction}</p>
                                     <p>Wind Speed: ${wind_speed}</p>
@@ -106,7 +106,7 @@ function appendFooter(sunrise, sunset, idx) {
                             <div class="card-body">
                                 <blockquote class="blockquote mb-0">
                             
-                                    <p>Sunrise in UTC:${sunrise}</p>
+                                    <p>Sunrise in UTC: ${sunrise}</p>
                                     <p>Sunset in UTC: ${sunset}</p>
                                 </blockquote>
                             </div>   
