@@ -80,7 +80,7 @@ dallas.addEventListener('click', () => {
 })
 
 dalSunBtn.addEventListener('click', () => {
-    fetch("https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323")
+    fetch("https://api.sunrise-sunset.org/json?lat=32.778149&lng=-96.795403")
     .then(response => response.json())
     .then((response) => {
         let dalSun = {}
@@ -95,6 +95,7 @@ dalSunBtn.addEventListener('click', () => {
     console.log(err)
     })
 })
+
 
 la.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2442047/2020/11/23/")
@@ -113,6 +114,25 @@ la.addEventListener('click', () => {
     })
 
 })
+
+laSunBtn.addEventListener('click', () => {
+    fetch("https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323")
+    .then(response => response.json())
+    .then((response) => {
+        let LASun = {}
+        LASun['sunrise'] = response.results.sunrise
+        LASun['sunset'] = response.results.sunset
+        sunInfoLA.push(LASun)
+        console.log(sunInfoLA)
+    
+    renderLASun()
+    })
+    .catch((err) => {
+    console.log(err)
+    })
+})
+
+
 
 function appendDiv(visibility, wind_direction, wind_speed, weather_state_name, idx) {
     container.innerHTML = ''
@@ -204,6 +224,12 @@ function renderDalSun() {
     })
 }
 
+function renderLASun() {
+    footer.innerHTML = ''
+    sunInfoLA.forEach((x, idx) => {
+        appendFooter(x['sunrise'], x['sunset'], idx)
+    })
+}
 // --------------------FUNCTIONS----------------------
 
 
