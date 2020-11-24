@@ -1,37 +1,68 @@
 html {
-    box-sizing: border-box
-  }
-  
+  box-sizing: border-box
+}
   /* The Universal Selector */
-  *, /* All elements*/
-  *::before, /* All ::before pseudo-elements */
-  *::after { /* All ::after pseudo-elements */
+*, /* All elements*/
+*::before, /* All ::before pseudo-elements */
+*::after { /* All ::after pseudo-elements */
     /* height & width will now include border & padding by default
-       but can be over-ridden as needed */
-    box-sizing: inherit;
-  }
-
-  :root {
-    font-size: 62.5%;
-  }
-
-  body{
-    text-align: center; 
-    display: grid;
-    justify-content: center;
-    background: url("https://i1.wp.com/css-tricks.com/wp-content/uploads/2019/06/clouds-featured.png?fit=4000%2C2000&ssl=1");
-    width: 100%;
-    min-width: 311px;
-    height: 100vh;
-    align-items: center;
-    perspective: 1000px;
-    perspective-origin: 50% 50%;
-    animation: animation 50s linear infinite;
+    but can be over-ridden as needed */
+  box-sizing: inherit;
+}
+:root {
+  font-size: 62.5%;
+}
+body{
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: url("https://i1.wp.com/css-tricks.com/wp-content/uploads/2019/06/clouds-featured.png?fit=4000%2C2000&ssl=1");
+  width: 100%;
+  min-width: 311px;
+  height: 100vh;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  animation: animation 50s linear infinite;
+  margin: 0;
 }
 @keyframes animation {
-    from {
-      background-position: 0px 0px; }
-    to {
-      background-position: 100% 0px; } 
+  from {
+    background-position: 0px 0px; }
+  to {
+    background-position: 100% 0px; } 
+}
+h1 {
+  font-size: 5rem;
+  height: 50px;
+}
+footer {
+  background: darkgray;
+  opacity: 75%;
+  height: 75px;
+  width: 100vw;
+  align-self: flex-end;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+.images {
+  height: 55px;
+  flex-direction: row;
+}
+.buttons{
+  width: 30%;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+}
+@media screen and (max-width: 420px){
+  .buttons{
+    height: 35px;
+    margin: 2px;
   }
- 
+  footer{
+    height: 50px;
+  }
+}
