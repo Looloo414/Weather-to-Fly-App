@@ -1,5 +1,5 @@
 # unit-one-project
-[Picture]()
+![Picture](/Users/alexafaulkison/code/sei/homework/unit-one-project/.vscode/Screen Shot 2020-11-16 at 2.37.12 PM.png)
 
 
 

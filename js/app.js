@@ -1,11 +1,3 @@
-// -------------------VARIABLES--------------------
-let dallasInfo = []
-let denInfo = []
-let laInfo = []
-let sunInfoDen = []
-let sunInfoDal = []
-let sunInfoLA = []
-
 // ----------------CACHED ELEMENTS------------------
 const results = document.querySelectorAll('.search-results');
 const den = document.getElementById('denver');
@@ -13,119 +5,75 @@ const dallas = document.getElementById('dallas');
 const la = document.getElementById('los-ang');
 const container = document.querySelector('.container')
 const footer = document.querySelector('.sunsetSunrise')
-const denSunBtn = document.querySelector('.den-sunrise')
-const dalSunBtn = document.querySelector('.dal-sunrise')
-const laSunBtn = document.querySelector('.la-sunrise')
 
 
+// New Featch Function
+async function fetchDataMutipleAPI(firstAPI=null, secondAPI=null) {
+    let newDiv = document.createElement("div")
+    newDiv.innerHTML = `
+                        <h3 class="card h-100">
+                        Pendding Please Wait Until We Featch The Data From The API...
+                        </h3>    
+                        `
+    container.appendChild(newDiv)
+
+    const [firstResponse, secondResponse] = await Promise.all(
+            [
+                fetch(firstAPI),
+                fetch(secondAPI)
+            ]
+        );
+
+    const first_API = await firstResponse.json();
+    const second_API = await secondResponse.json();
+
+    return {
+        first_API,
+        second_API
+    };
+}
+
+function APIURLs(target){
+    if(target === 'Denver')
+        return [
+            'https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2391279/2020/11/23/', // Forcast API
+            'https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264'                     // Sunset/Sunrise API
+        ]
+    if(target === 'Dallas')
+        return [
+            'https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/', // Forcast API
+            'https://api.sunrise-sunset.org/json?lat=32.778149&lng=-96.795403'                      // Sunset/Sunrise API
+        ]
+    if(target === 'LosAngeles')
+        return [
+            'https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2442047/2020/11/23/', // Forcast API
+            'https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323'                     // Sunset/Sunrise API
+        ]
+} 
 
 // ----------------EVENT LISTENERS-------------------
-den.addEventListener('click', () => {
-    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2391279/2020/11/23/")
-        .then(response => response.json())
-        .then((data) => {
-            let denData = {}
-            denData['visibility'] = data[0].visibility
-            denData['wind_speed'] = data[0].wind_speed
-            denData['wind_direction'] = data[0].wind_direction
-            denData['weather_state_name'] = data[0].weather_state_name
-            denInfo.push(denData)
-            console.log(denInfo)
 
-            renderDen()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
+[den, dallas, la].forEach(item => {
+    item.addEventListener('click', (e) => {
+        let targetLocation = e.target.getAttribute('data-location');
+        const [first_API_URL, second_API_URL] = APIURLs(targetLocation);
+        fetchDataMutipleAPI(first_API_URL,second_API_URL)
+        .then(({ first_API, second_API }) => {
+            // Handel First data Forcast Info
+            let firstData = {}
+            firstData['visibility'] = first_API[0].visibility
+            firstData['wind_speed'] = first_API[0].wind_speed
+            firstData['wind_direction'] = first_API[0].wind_direction
+            firstData['weather_state_name'] = first_API[0].weather_state_name
+            renderForcastInfo(firstData)
 
-denSunBtn.addEventListener('click', () => {
-    fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
-        .then(response => response.json())
-        .then((response) => {
-            let denSun = {}
-            denSun['sunrise'] = response.results.sunrise
-            denSun['sunset'] = response.results.sunset
-            sunInfoDen.push(denSun)
-            console.log(sunInfoDen)
-
-            renderDenSun()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
-
-dallas.addEventListener('click', () => {
-    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
-        .then(response => response.json())
-        .then((data) => {
-            let dallasData = {}
-            dallasData['visibility'] = data[0].visibility
-            dallasData['wind_speed'] = data[0].wind_speed
-            dallasData['wind_direction'] = data[0].wind_direction
-            dallasData['weather_state_name'] = data[0].weather_state_name
-            dallasData['location'] = 'Dallas'
-            dallasInfo.push(dallasData)
-            render()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-
-})
-
-dalSunBtn.addEventListener('click', () => {
-    fetch("https://api.sunrise-sunset.org/json?lat=32.778149&lng=-96.795403")
-        .then(response => response.json())
-        .then((response) => {
-            let dalSun = {}
-            dalSun['sunrise'] = response.results.sunrise
-            dalSun['sunset'] = response.results.sunset
-            sunInfoDal.push(dalSun)
-            console.log(sunInfoDal)
-
-            renderDalSun()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
-
-
-la.addEventListener('click', () => {
-    fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2442047/2020/11/23/")
-        .then(response => response.json())
-        .then((data) => {
-            let laData = {}
-            laData['visibility'] = data[0].visibility
-            laData['wind_speed'] = data[0].wind_speed
-            laData['wind_direction'] = data[0].wind_direction
-            laData['weather_state_name'] = data[0].weather_state_name
-            laInfo.push(laData)
-            renderLA()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-
-})
-
-laSunBtn.addEventListener('click', () => {
-    fetch("https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323")
-        .then(response => response.json())
-        .then((response) => {
-            let LASun = {}
-            LASun['sunrise'] = response.results.sunrise
-            LASun['sunset'] = response.results.sunset
-            sunInfoLA.push(LASun)
-            console.log(sunInfoLA)
-
-            renderLASun()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            // Handel Second data Sun Info
+            let secondData = {}
+            secondData['sunrise'] = second_API.results.sunrise
+            secondData['sunset'] = second_API.results.sunset
+            renderSunInfo(secondData)
+        });
+    })    
 })
 
 // --------------------FUNCTIONS----------------------
@@ -169,65 +117,34 @@ function appendFooter(sunrise, sunset, idx) {
 
 
 function deleteQuote(idx) {
-    dallasInfo.splice(idx, 1)
-    render()
+    renderForcastInfo({})
+    renderSunInfo({})
 }
 
 function deleteQuote(idx) {
-    denInfo.splice(idx, 1)
-    renderDen()
+    renderForcastInfo({})
+    renderSunInfo({})
 }
 
 function deleteQuote(idx) {
-    laInfo.splice(idx, 1)
-    renderLA()
+    renderForcastInfo({})
+    renderSunInfo({})
 }
 
-
-function render() {
+function renderForcastInfo(forcastInfo) {
     container.innerHTML = ''
-    dallasInfo.forEach((x, idx) => {
-        appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
-    })
-
+    appendDiv(
+        forcastInfo['visibility'], 
+        forcastInfo['wind_speed'], 
+        forcastInfo['wind_direction'], 
+        forcastInfo['weather_state_name'], 
+        0
+    )
 }
-
-function renderDen() {
-    container.innerHTML = ''
-    denInfo.forEach((x, idx) => {
-        appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
-    })
-}
-
-function renderLA() {
-    container.innerHTML = ''
-    laInfo.forEach((x, idx) => {
-        appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
-    })
-}
-
-function renderDenSun() {
+function renderSunInfo(sunInfo) {
     footer.innerHTML = ''
-    sunInfoDen.forEach((x, idx) => {
-        appendFooter(x['sunrise'], x['sunset'], idx)
-    })
+    appendFooter(sunInfo['sunrise'], sunInfo['sunset'], 0)
 }
-
-function renderDalSun() {
-    footer.innerHTML = ''
-    sunInfoDal.forEach((x, idx) => {
-        appendFooter(x['sunrise'], x['sunset'], idx)
-    })
-}
-
-function renderLASun() {
-    footer.innerHTML = ''
-    sunInfoLA.forEach((x, idx) => {
-        appendFooter(x['sunrise'], x['sunset'], idx)
-    })
-}
-
-
 
 
 
