@@ -46,6 +46,12 @@ footer {
   justify-content: center;
   display: flex;
 }
+.container {
+  font-size: 20px;
+}
+.footer {
+  font-size: 15px;
+}
 .images {
   height: 55px;
   flex-direction: row;

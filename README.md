@@ -21,7 +21,7 @@
 
 
 #Deployed App: 
-![Picture]("/images/Screenshot of App.png")
+![Picture](/images/Screenshot of App.png)
 
 This app is a quick reference point for pilots to check the weather in their area and verify the sunrise and sunset times in their area. This will help them to determine if the conditions are safe for Visual Flight Rules.
 
