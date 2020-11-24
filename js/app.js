@@ -11,9 +11,13 @@ const den = document.getElementById('denver');
 const dallas = document.getElementById('dallas');
 const la = document.getElementById('los-ang');
 const container = document.querySelector('.container')
+const footer = document.querySelector('.sunsetSunrise')
 let dallasInfo = []
 let denInfo = []
 let laInfo = []
+let sunInfoDen = []
+let sunInfoDal = []
+let sunInfoLA = []
 
 
 // ----------------EVENT LISTENERS-------------------
@@ -34,6 +38,19 @@ den.addEventListener('click', () => {
             console.log(err)
         })
 })
+
+// den.addEventListener('click', () => {
+//     fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
+//     .then(response => response.json())
+//     .then((response) => {
+//         let denSun = {}
+//         denSun['sunrise'] = response.results.sunrise
+//         denSun['sunset'] = response.results.sunset
+//         sunInfoDen.push(denSun)
+//         console.log(sunInfoDen)
+//         renderDenSun()
+//     })
+// })
 
 dallas.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
@@ -73,6 +90,7 @@ la.addEventListener('click', () => {
 })
 
 function appendDiv(visibility, wind_direction, wind_speed, weather_state_name, idx) {
+    container.innerHTML = ''
     let newDiv = document.createElement("div")
     newDiv.innerHTML = `
                         <div class="card h-100">
@@ -90,6 +108,22 @@ function appendDiv(visibility, wind_direction, wind_speed, weather_state_name, i
                         </div>    
                         `
     container.appendChild(newDiv)
+}
+
+function appendFooter(sunrise, sunset, idx) {
+    footer.innerHTML = ''
+    let newDiv = document.createElement("div")
+    newDiv.innerHTML = `
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                            
+                                    <p>Sunrise:${sunrise}</p>
+                                    <p>Sunset: ${sunset}</p>
+                                </blockquote>
+                            </div>   
+                        `
+    footer.appendChild(newDiv)
 }
 
 function deleteQuote(idx) {
@@ -117,7 +151,7 @@ function render() {
 
 function renderDen() {
     container.innerHTML = ''
-    denInfo.forEach((x, idx) => {
+    sunInfoDen.forEach((x, idx) => {
         appendDiv(x['visibility'], x['wind_speed'], x['wind_direction'], x['weather_state_name'], idx)
     })
 }
@@ -129,16 +163,17 @@ function renderLA() {
     })
 }
 
+function renderDenSun() {
+    footer.innerHTML = ''
+    dallasInfo.forEach((x, idx) => {
+        let sunrise = x[0].sunrise
+        let sunset = x[0].sunset
+        appendFooter(sunrise, sunset, idx)
+    })
+}
+
 // --------------------FUNCTIONS----------------------
 
-
-
-// fetch(sunsetAPI)
-// .then(response => response.json())
-// .then((data) => {
-//   console.log(data[0])
-// })
-// .catch(err => console.log(err))
 
 
 
