@@ -1,5 +1,9 @@
 # Unit-One-Project
+![Picture](images/Second-Wireframe.png)
 
+![Picture](images/SunriseAPIPostman.png)
+
+![Picture](images/WeatherAPIPostman.png)
 
 ### Technologies Used:
 
@@ -19,16 +23,19 @@
 
 [Weather to Fly!](http://weather_to_fly.surge.sh/)
 
+This app is a quick reference point for pilots to check the weather in their area and verify the sunrise and sunset times in their area. This will help them to determine if the conditions are safe for Visual Flight Rules.
 
-#Deployed App: 
+Deployed App: 
 ![Picture](images/Screenshot-of-App.png)
 
-This app is a quick reference point for pilots to check the weather in their area and verify the sunrise and sunset times in their area. This will help them to determine if the conditions are safe for Visual Flight Rules.
+![Picture](images/Screenshot-App-2.png)
 
 
 ### Biggest Challenges
 
 My app/site was originally supposed to have 2 input buttons that would allow the user to input their city and the date they desire, however; I struggled immensly with the weather API. Between using outside servers to get around CORS and extracting the specific data I desired I decided to change my plan. Each city in this API has a specific and random id number that would have made it difficult to translate, so I hard coded the city's specific API code and limited this project to only pulling data from a few locations. 
+
+![Picture](images/Original-Wireframe.png)
 
 
 
