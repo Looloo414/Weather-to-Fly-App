@@ -93,8 +93,7 @@ function appendDiv(visibility, wind_direction, wind_speed, weather_state_name, i
 
                                 </blockquote>
                             </div>
-                            <button id="delButton" class="btn" onClick={deleteQuote(${idx})}>X</button>
-                        </div>    
+                        
                         `
     container.appendChild(newDiv)
 }
@@ -115,21 +114,6 @@ function appendFooter(sunrise, sunset, idx) {
     footer.appendChild(newDiv)
 }
 
-
-function deleteQuote(idx) {
-    renderForcastInfo({})
-    renderSunInfo({})
-}
-
-function deleteQuote(idx) {
-    renderForcastInfo({})
-    renderSunInfo({})
-}
-
-function deleteQuote(idx) {
-    renderForcastInfo({})
-    renderSunInfo({})
-}
 
 function renderForcastInfo(forcastInfo) {
     container.innerHTML = ''
