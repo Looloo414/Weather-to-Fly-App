@@ -12,9 +12,9 @@ const dallas = document.getElementById('dallas');
 const la = document.getElementById('los-ang');
 const container = document.querySelector('.container')
 const footer = document.querySelector('.sunsetSunrise')
-const denSunBtn = document.querySelector('den-sunrise')
-const dalSunBtn = document.querySelector('dal-sunrise')
-const laSunBtn = document.querySelector('la-sunrise')
+const denSunBtn = document.querySelector('.den-sunrise')
+const dalSunBtn = document.querySelector('.dal-sunrise')
+const laSunBtn = document.querySelector('.la-sunrise')
 let dallasInfo = []
 let denInfo = []
 let laInfo = []
@@ -46,18 +46,19 @@ den.addEventListener('click', () => {
 denSunBtn.addEventListener('click', () => {
     fetch("https://api.sunrise-sunset.org/json?lat=39.740009&lng=-104.992264")
     .then(response => response.json())
-    .then((data) => {
+    .then((response) => {
         let denSun = {}
         denSun['sunrise'] = response.results.sunrise
         denSun['sunset'] = response.results.sunset
         sunInfoDen.push(denSun)
         console.log(sunInfoDen)
-    })
+    
     renderDenSun()
     })
     .catch((err) => {
     console.log(err)
     })
+})
     
 dallas.addEventListener('click', () => {
     fetch("https://cors-anywhere.herokuapp.com/metaweather.com/api/location/2388929/2020/11/23/")
@@ -76,6 +77,23 @@ dallas.addEventListener('click', () => {
             console.log(err)
         })
 
+})
+
+dalSunBtn.addEventListener('click', () => {
+    fetch("https://api.sunrise-sunset.org/json?lat=34.053490&lng=-118.245323")
+    .then(response => response.json())
+    .then((response) => {
+        let dalSun = {}
+        dalSun['sunrise'] = response.results.sunrise
+        dalSun['sunset'] = response.results.sunset
+        sunInfoDal.push(dalSun)
+        console.log(sunInfoDal)
+    
+    renderDalSun()
+    })
+    .catch((err) => {
+    console.log(err)
+    })
 })
 
 la.addEventListener('click', () => {
@@ -174,7 +192,14 @@ function renderLA() {
 
 function renderDenSun() {
     footer.innerHTML = ''
-    sunInfoDen.forEach((y, idx) => {
+    sunInfoDen.forEach((x, idx) => {
+        appendFooter(x['sunrise'], x['sunset'], idx)
+    })
+}
+
+function renderDalSun() {
+    footer.innerHTML = ''
+    sunInfoDal.forEach((x, idx) => {
         appendFooter(x['sunrise'], x['sunset'], idx)
     })
 }
