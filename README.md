@@ -21,11 +21,9 @@
 
 
 Deployed App: 
-![Photo](/Users/alexafaulkison/code/sei/homework/unit-one-project/images/Screenshot of App.png"Image of App")
+![Photo]("/Users/alexafaulkison/code/sei/homework/unit-one-project/images/Screenshot of App.png"Image of App")
 
-
-
-
+This app is a quick reference point for pilots to check the weather in their area and verify the sunrise and sunset times in their area. This will help them to determine if the conditions are safe for Visual Flight Rules.
 
 
 ### Biggest Challenges
@@ -46,4 +44,9 @@ My app/site was originally supposed to have 2 input buttons that would allow the
 3. Create event listners for each button and have it pull the promised API's and append the weather to the div and the sunrise and sunset data to the footer. 
 4. Since the API's are being fetched through another server and it is fetching 2 API's create a message to allow the user to know that their click is doing something and to please wait. 
 5. Create a delete function so that the appended/fetched data does not keep pushing into the array and displaying multiple fetch requests. 
+
+
+### Next Steps
+
+I plan to debug the issues concerining the "WOEID" in the weather API, so that I can create input bars for the user to enter their own city and their desired dates. I also want to add a stylistic function to display whether the current conditions in the user's area are safe for VFR flight or not. I want to play with the animations and style features more as well. I would like to have an airplane fly across the screen and a green light illuminates showing that the conditions are within VFR limitations or a grounded plane and a red light will display if they are not. 
 
